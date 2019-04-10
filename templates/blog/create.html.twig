@@ -27,6 +27,14 @@
             }) 
         }}
 
+        <button type="submit" class="btn btn-success">
+            {% if editForm %}
+                Enregistrer les modifications
+            {% else %}
+                Ajouter un nouvel article
+            {% endif %}
+        </button>
+
         {{ form_end(formArticle) }}
 
 {% endblock %}
