@@ -1,0 +1,7 @@
+# Routes 
+
+
+test:
+    path: /test/{name}
+    controller: App\Controller\Home::test
+
