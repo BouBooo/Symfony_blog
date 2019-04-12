@@ -7,12 +7,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Articles;
+use App\Entity\Category;
 use App\Repository\ArticlesRepository;
 
 /* FORM */
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class BlogController extends AbstractController
 {
@@ -54,6 +56,10 @@ class BlogController extends AbstractController
                         ->add('title', TextType::class)
                         ->add('content', TextareaType::class)
                         ->add('image', TextType::class)
+                        ->add('category', EntityType::class, [
+                            'class' => Category::class,
+                            'choice_label' => 'title'
+                        ])
                         ->getForm();
 
         $form->handleRequest($request);
